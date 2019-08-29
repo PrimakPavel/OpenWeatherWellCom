@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">OpenWeatherWellCom</string>
+    <string name="city_name">City</string>
+    <string name="btn_ok">Ok</string>
+    <string name="btn_settings">Change City</string>
+    <string name="select_city_title">Select City</string>
+    <string name="error_incorrect_input">Incorrect input</string>
+
+</resources>
