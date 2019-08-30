@@ -1,9 +1,220 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".presentation.screens.WeatherInfoFragment">
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:context=".presentation.screens.WeatherInfoFragment">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivTemperature"
+            android:contentDescription="@string/content_descriptor_temperature"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/standard_margin"
+            android:layout_marginLeft="@dimen/standard_margin"
+            android:layout_marginTop="@dimen/standard_margin"
+            app:layout_constraintEnd_toStartOf="@+id/ivHumidity"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_hot" />
+
+        <FrameLayout
+            android:id="@+id/frameLayout"
+            android:layout_width="@dimen/temp_layout_width"
+            android:layout_height="@dimen/temp_layout_height"
+            android:layout_marginTop="@dimen/small_margin"
+            android:layout_marginBottom="@dimen/large_margin"
+            android:background="@drawable/temperature_gradient"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/ivTemperature"
+            app:layout_constraintStart_toStartOf="@+id/ivTemperature"
+            app:layout_constraintTop_toTopOf="@+id/barrier" />
 
 
-</FrameLayout>
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivHumidity"
+            android:layout_width="wrap_content"
+            android:contentDescription="@string/content_descriptor_humidity"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/large_margin"
+            android:layout_marginLeft="@dimen/large_margin"
+            android:layout_marginTop="@dimen/standard_margin"
+            app:layout_constraintEnd_toStartOf="@+id/ivPressure"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/ivTemperature"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_drop" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivPressure"
+            android:layout_width="wrap_content"
+            android:contentDescription="@string/content_descriptor_pressure"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/large_margin"
+            android:layout_marginLeft="@dimen/large_margin"
+            android:layout_marginTop="@dimen/standard_margin"
+            app:layout_constraintEnd_toStartOf="@+id/ivWind"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/ivHumidity"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_pressure" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivWind"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/content_descriptor_wind"
+            android:layout_marginStart="@dimen/large_margin"
+            android:layout_marginLeft="@dimen/large_margin"
+            android:layout_marginTop="@dimen/standard_margin"
+            android:layout_marginEnd="@dimen/standard_margin"
+            android:layout_marginRight="@dimen/standard_margin"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/ivPressure"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_wind" />
+
+        <TextView
+            style="@style/AppTheme.textStyle"
+            android:id="@+id/tvHumidity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/standard_margin"
+            android:text="@string/empty_field"
+            app:layout_constraintEnd_toEndOf="@+id/ivHumidity"
+            app:layout_constraintStart_toStartOf="@+id/ivHumidity"
+            app:layout_constraintTop_toBottomOf="@+id/ivHumidity"
+            tools:text="60%" />
+
+        <TextView
+            style="@style/AppTheme.textStyle"
+            android:id="@+id/tvPressure"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/standard_margin"
+            android:text="@string/empty_field"
+            app:layout_constraintEnd_toEndOf="@+id/ivPressure"
+            app:layout_constraintStart_toStartOf="@+id/ivPressure"
+            app:layout_constraintTop_toBottomOf="@+id/ivPressure"
+            tools:text="100kPa" />
+
+        <TextView
+            style="@style/AppTheme.textStyle"
+            android:id="@+id/tvWindSpeed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/standard_margin"
+            android:text="@string/empty_field"
+            app:layout_constraintEnd_toEndOf="@+id/ivWind"
+            app:layout_constraintStart_toStartOf="@+id/ivWind"
+            app:layout_constraintTop_toBottomOf="@+id/ivWind"
+            tools:text="10m/s" />
+
+        <TextView
+            style="@style/AppTheme.textStyle"
+            android:id="@+id/tvWindDegree"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/empty_field"
+            app:layout_constraintBottom_toBottomOf="@+id/ivWind"
+            app:layout_constraintStart_toStartOf="@+id/ivWind"
+            tools:text="50'" />
+
+        <TextView
+            style="@style/AppTheme.textStyle"
+            android:id="@+id/tvTempMax"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/small_margin"
+            android:layout_marginLeft="@dimen/small_margin"
+            android:text="@string/empty_field"
+            app:layout_constraintStart_toEndOf="@+id/frameLayout"
+            app:layout_constraintTop_toTopOf="@+id/frameLayout"
+            tools:text="25" />
+
+        <TextView
+            style="@style/AppTheme.textStyle"
+            android:id="@+id/tvTemp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/small_margin"
+            android:layout_marginLeft="@dimen/small_margin"
+            android:text="@string/empty_field"
+            app:layout_constraintBottom_toBottomOf="@+id/frameLayout"
+            app:layout_constraintStart_toEndOf="@+id/frameLayout"
+            app:layout_constraintTop_toTopOf="@+id/frameLayout"
+            tools:text="20" />
+
+        <TextView
+            style="@style/AppTheme.textStyle"
+            android:id="@+id/tvTempMin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/small_margin"
+            android:layout_marginLeft="@dimen/small_margin"
+            android:text="@string/empty_field"
+            app:layout_constraintBottom_toBottomOf="@+id/frameLayout"
+            app:layout_constraintStart_toEndOf="@+id/frameLayout"
+            tools:text="18" />
+
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/barrier"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:barrierDirection="bottom"
+            app:constraint_referenced_ids="tvHumidity,tvPressure" />
+
+        <TextView
+            style="@style/AppTheme.textStyle"
+            android:id="@+id/tvTempLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/standard_margin"
+            android:text="@string/temperature_label"
+            app:layout_constraintEnd_toEndOf="@+id/ivTemperature"
+            app:layout_constraintStart_toStartOf="@+id/ivTemperature"
+            app:layout_constraintTop_toBottomOf="@+id/ivTemperature" />
+
+        <ProgressBar
+            android:id="@+id/pb"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:layout_margin="@dimen/standard_margin"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:visibility="visible" />
+
+        <TextView
+            style="@style/AppTheme.textStyle"
+            android:id="@+id/tvErrorMessage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:layout_margin="@dimen/standard_margin"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Errors info" />
+
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/groupWeatherData"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:constraint_referenced_ids="ivTemperature,frameLayout,ivHumidity,ivPressure,ivWind,tvHumidity,tvPressure,tvWindSpeed,tvWindDegree,tvTempMax,tvTemp,tvTempMin,tvTempLabel"
+            tools:visibility="visible" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

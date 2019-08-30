@@ -3,7 +3,7 @@ package com.pavelprymak.openweatherwellcom.utils
 import com.pavelprymak.openweatherwellcom.data.db.WeatherEntity
 import com.pavelprymak.openweatherwellcom.data.network.pojos.weaterByCityName.WeatherByCityResponse
 
-fun WeatherByCityResponse.convertToWeaterEntity(): WeatherEntity {
+fun WeatherByCityResponse.convertToWeatherEntity(): WeatherEntity {
     return WeatherEntity(
         cityName = name,
         temp = main?.temp,

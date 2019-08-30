@@ -8,7 +8,7 @@ import com.pavelprymak.openweatherwellcom.data.db.repo.DbRepo
 import com.pavelprymak.openweatherwellcom.data.network.pojos.weaterByCityName.WeatherByCityResponse
 import com.pavelprymak.openweatherwellcom.data.network.repo.NetworkRepo
 import com.pavelprymak.openweatherwellcom.presentation.common.SimpleViewModel
-import com.pavelprymak.openweatherwellcom.utils.convertToWeaterEntity
+import com.pavelprymak.openweatherwellcom.utils.convertToWeatherEntity
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
@@ -28,7 +28,7 @@ class WeatherViewModel(
             mNetworkRepo.getWeatherByCity(cityName)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .map { weatherResponse: WeatherByCityResponse -> weatherResponse.convertToWeaterEntity() }
+                .map { weatherResponse: WeatherByCityResponse -> weatherResponse.convertToWeatherEntity() }
                 .subscribe({ result ->
                     mWeatherData.value = result
                     mDbRepo.clearTableAndInsertWeather(result)
@@ -46,6 +46,14 @@ class WeatherViewModel(
             mWeatherInfoDbData = mDbRepo.getWeather()
         }
         return mWeatherInfoDbData
+    }
+
+    fun getLoadingData(): LiveData<Boolean> {
+        return mLoadingData
+    }
+
+    fun getErrorsData(): LiveData<Throwable> {
+        return mErrorData
     }
 
     fun cleanWeatherInfoInDb() {
