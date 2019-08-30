@@ -13,7 +13,7 @@ abstract class AppDatabase : RoomDatabase() {
 
     companion object {
         private val LOCK = Any()
-        private val DATABASE_NAME = "db_podcasts"
+        private const val DATABASE_NAME = "db_podcasts"
         private var sInstance: AppDatabase? = null
 
         fun getInstance(context: Context): AppDatabase {
